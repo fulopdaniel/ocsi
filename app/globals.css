@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* ============================================================= */
+/*  TÉMA – Fresh & Clean (teal/cyan + meleg borostyán akcentus)  */
+/* ============================================================= */
+
+@theme {
+  --color-ink: #0c1f1c;
+  --color-ink-soft: #44574f;
+  --color-cream: #f4f8f6;
+  --color-surface: #ffffff;
+
+  --color-brand-50: #eafaf6;
+  --color-brand-100: #c9f2e8;
+  --color-brand-200: #97e6d6;
+  --color-brand-300: #5ed4be;
+  --color-brand-400: #2bbaa1;
+  --color-brand-500: #129e88;
+  --color-brand-600: #0d8174;
+  --color-brand-700: #0f675e;
+  --color-brand-800: #11514c;
+  --color-brand-900: #103f3c;
+
+  --color-amber-accent: #f5a524;
+  --color-amber-deep: #d97e0a;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(16, 63, 60, 0.04), 0 8px 24px rgba(16, 63, 60, 0.08);
+  --shadow-lift: 0 2px 4px rgba(16, 63, 60, 0.05), 0 18px 48px rgba(16, 63, 60, 0.14);
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Háttér-textúrák / atmoszféra ---------- */
+.bg-mesh {
+  background-image:
+    radial-gradient(60% 55% at 12% 8%, rgba(94, 212, 190, 0.25) 0%, transparent 60%),
+    radial-gradient(50% 50% at 92% 0%, rgba(18, 158, 136, 0.20) 0%, transparent 55%),
+    radial-gradient(45% 60% at 80% 90%, rgba(245, 165, 36, 0.10) 0%, transparent 60%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(16, 63, 60, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 63, 60, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* ---------- Betöltési animációk ---------- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(2deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-in {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.float-slow { animation: float-slow 7s ease-in-out infinite; }
+
+/* ---------- Scroll-reveal (IntersectionObserver) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-in, .float-slow { animation: none; opacity: 1; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
