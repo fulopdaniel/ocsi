@@ -6,7 +6,8 @@ import {
   services,
   serviceAreas,
 } from "@/lib/site";
-import { SparkleIcon, PhoneIcon, MailIcon, MapPinIcon, ViberIcon } from "./icons";
+import Image from "next/image";
+import { PhoneIcon, MailIcon, MapPinIcon, ViberIcon } from "./icons";
 
 export default function Footer() {
   const year = 2024;
@@ -17,9 +18,13 @@ export default function Footer() {
           {/* Márka */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white">
-                <SparkleIcon className="h-5 w-5" />
-              </span>
+              <Image
+                src="/logo.png"
+                alt={`${site.name} logó`}
+                width={44}
+                height={44}
+                className="h-11 w-11"
+              />
               <span className="font-display text-lg font-extrabold text-ink">
                 {site.shortName}
               </span>

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { site, telLink } from "@/lib/site";
-import { PhoneIcon, SparkleIcon } from "./icons";
+import { PhoneIcon } from "./icons";
 
 const navLinks = [
   { href: "#szolgaltatasok", label: "Szolgáltatások" },
@@ -38,9 +39,14 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white shadow-soft transition-transform group-hover:scale-105">
-            <SparkleIcon className="h-5 w-5" />
-          </span>
+          <Image
+            src="/logo.png"
+            alt={`${site.name} logó`}
+            width={44}
+            height={44}
+            priority
+            className="h-11 w-11 transition-transform group-hover:scale-105"
+          />
           <span className="leading-tight">
             <span className="block font-display text-[15px] font-extrabold text-ink">
               {site.shortName}
