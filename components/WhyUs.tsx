@@ -34,7 +34,7 @@ const reasons = [
   {
     icon: ClockIcon,
     title: "Rugalmas időpont",
-    text: "Hétfőtől szombatig dolgozom, igazodva a beosztásodhoz. Gyors, megbízható kiszállás.",
+    text: "Igazodom a beosztásodhoz — hétvégén is elérhető vagyok. Gyors, megbízható kiszállás.",
   },
   {
     icon: SparkleIcon,

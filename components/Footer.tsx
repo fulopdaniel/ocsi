@@ -10,7 +10,7 @@ import Image from "next/image";
 import { PhoneIcon, MailIcon, MapPinIcon, ViberIcon } from "./icons";
 
 export default function Footer() {
-  const year = 2024;
+  const year = 2026;
   return (
     <footer className="border-t border-brand-100 bg-cream">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">

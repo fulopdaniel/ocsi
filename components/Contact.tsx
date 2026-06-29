@@ -36,10 +36,14 @@ const contactCards = [
   },
 ];
 
+const WEB3FORMS_ACCESS_KEY = "ce615c00-58fe-46a0-b469-7c24139b3326";
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -48,14 +52,41 @@ export default function Contact() {
     const service = String(data.get("service") || "");
     const message = String(data.get("message") || "");
 
-    const subject = `Árajánlatkérés – ${service || "kárpittisztítás"}`;
-    const body = `Név: ${name}\nTelefon: ${phone}\nSzolgáltatás: ${service}\n\nÜzenet:\n${message}`;
-    const href = `${mailLink}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Árajánlatkérés – ${service || "kárpittisztítás"}`,
+      from_name: site.name,
+      name,
+      phone,
+      service,
+      message,
+      // mézesmadzag a spam ellen – ezt a botok kitöltik, az emberek nem
+      botcheck: String(data.get("botcheck") || ""),
+    };
 
-    window.location.href = href;
-    setSent(true);
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+      if (result.success) {
+        form.reset();
+        setSent(true);
+      } else {
+        setError(result.message || "Ismeretlen hiba történt.");
+      }
+    } catch {
+      setError("A küldés nem sikerült. Kérlek, próbáld újra, vagy hívj telefonon.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -117,7 +148,7 @@ export default function Contact() {
                     Köszönöm!
                   </h3>
                   <p className="mt-2 max-w-sm text-ink-soft">
-                    Megnyílt az e-mail kliensed az üzenettel. Ha gyorsabb választ
+                    Megkaptam az üzeneted, hamarosan jelentkezem. Ha gyorsabb választ
                     szeretnél, hívj bátran a{" "}
                     <a href={telLink} className="font-bold text-brand-700">
                       {site.phoneDisplay}
@@ -134,6 +165,15 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* honeypot – rejtett a felhasználó elől, csak botok töltik ki */}
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field label="Neved" name="name" placeholder="Pl. Kovács Anna" required />
                     <Field
@@ -182,15 +222,22 @@ export default function Contact() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="rounded-xl bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-4 text-base font-bold text-white shadow-lift transition-all hover:-translate-y-0.5 hover:bg-brand-700"
+                    disabled={sending}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-4 text-base font-bold text-white shadow-lift transition-all hover:-translate-y-0.5 hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
                   >
-                    Árajánlatot kérek
+                    {sending ? "Küldés…" : "Árajánlatot kérek"}
                   </button>
                   <p className="text-center text-xs text-ink-soft">
-                    A „Küldés” gomb megnyitja az e-mail klienst az adataiddal. Vagy
-                    egyszerűen{" "}
+                    Az adataidat közvetlenül elküldöm — válaszként hamarosan
+                    jelentkezem. Vagy egyszerűen{" "}
                     <a href={telLink} className="font-bold text-brand-700">
                       hívj telefonon
                     </a>

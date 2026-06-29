@@ -91,21 +91,6 @@ const jsonLd = {
     longitude: site.geo.lng,
   },
   areaServed: serviceAreas.map((a) => ({ "@type": "City", name: a })),
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "07:00",
-      closes: "19:00",
-    },
-  ],
   makesOffer: [
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ülőgarnitúra és kanapé tisztítás" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Szőnyegtisztítás" } },

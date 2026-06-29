@@ -19,8 +19,8 @@ export const site = {
   phoneRaw: "+36306214934",
   // E-mail
   email: "asztalostibor13@gmail.com",
-  // Nyitvatartás
-  hours: "Hétfő–Szombat: 7:00–19:00",
+  // Elérhetőség (rugalmas, hétvégén is)
+  hours: "Hétvégén is elérhető",
   priceRange: "$$",
   // Megközelítő földrajzi koordináták Orosháza központra (finomítsd, ha kell)
   geo: { lat: 46.5667, lng: 20.6667 },
