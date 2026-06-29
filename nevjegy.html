@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asztalos Tibor Kárpittisztítás — Névjegykártya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c1f1c; --ink-soft:#44574f; --cream:#f4f8f6; --surface:#fff;
+    --b100:#c9f2e8; --b200:#97e6d6; --b300:#5ed4be; --b400:#2bbaa1;
+    --b500:#129e88; --b600:#0d8174; --b700:#0f675e; --b800:#11514c; --b900:#103f3c;
+    --amber:#f5a524; --amber-deep:#d97e0a;
+    --display:'Bricolage Grotesque',sans-serif;
+    --sans:'Manrope',sans-serif;
+    /* 85x55mm @ 10px/mm */
+    --w:850px; --h:550px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:var(--sans);
+    background:
+      radial-gradient(120% 80% at 50% -10%, #e7efec 0%, transparent 60%),
+      linear-gradient(180deg,#eef3f1,#dfe7e4);
+    min-height:100vh; color:var(--ink);
+    display:flex; flex-direction:column; align-items:center;
+    gap:34px; padding:56px 24px 80px;
+  }
+  .page-head{text-align:center; max-width:var(--w)}
+  .page-head h1{font-family:var(--display); font-weight:800; font-size:22px; letter-spacing:-.02em; color:var(--b800)}
+  .page-head p{margin-top:6px; font-size:13px; color:var(--ink-soft); font-weight:500}
+  .label{
+    align-self:flex-start; margin-left:2px;
+    font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--b700); opacity:.7;
+  }
+  .stack{display:flex; flex-direction:column; gap:14px; align-items:center}
+
+  .card{
+    width:var(--w); height:var(--h); position:relative; overflow:hidden;
+    box-shadow:0 4px 10px rgba(16,63,60,.10), 0 30px 70px rgba(16,63,60,.22);
+    border-radius:2px;
+  }
+
+  /* ---------------- FRONT ---------------- */
+  .front{
+    background:
+      radial-gradient(70% 60% at 12% 6%, rgba(94,212,190,.30), transparent 60%),
+      radial-gradient(60% 60% at 92% 4%, rgba(18,158,136,.22), transparent 55%),
+      radial-gradient(60% 80% at 86% 104%, rgba(245,165,36,.16), transparent 60%),
+      linear-gradient(150deg,var(--b700) 0%, var(--b800) 52%, var(--b900) 100%);
+    color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+  }
+  /* grain */
+  .front::after{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .frame{
+    position:absolute; inset:30px; border:1px solid rgba(151,230,214,.28); border-radius:2px; pointer-events:none;
+  }
+  .badge{
+    width:128px; height:128px; border-radius:50%; background:#fff;
+    display:grid; place-items:center; margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.28), inset 0 0 0 1px var(--b100);
+  }
+  .badge img{width:104px; height:104px; object-fit:contain}
+  .front .name{
+    font-family:var(--display); font-weight:800; font-size:60px; line-height:1;
+    letter-spacing:-.015em; color:#fff;
+  }
+  .front .role{
+    margin-top:18px; display:flex; align-items:center; gap:18px;
+    font-size:15px; font-weight:700; letter-spacing:.42em; color:var(--amber);
+    text-transform:uppercase; text-indent:.42em;
+  }
+  .front .role::before,.front .role::after{
+    content:""; width:46px; height:1px; background:linear-gradient(90deg,transparent,var(--b400));
+  }
+  .front .role::after{background:linear-gradient(90deg,var(--b400),transparent)}
+  .front .tag{
+    margin-top:22px; font-size:16px; font-weight:500; color:var(--b200); letter-spacing:.01em;
+  }
+
+  /* ---------------- BACK ---------------- */
+  .back{
+    background:
+      radial-gradient(90% 70% at 100% 0%, #eff6f3 0%, transparent 55%),
+      var(--cream);
+    background-color:var(--cream);
+    display:flex; flex-direction:column;
+    padding:48px 56px 0;
+  }
+  .back .topbar{position:absolute; top:0; left:0; right:0; height:8px;
+    background:linear-gradient(90deg,var(--b600),var(--b800));}
+  .back .topbar::after{content:""; position:absolute; top:0; left:0; width:42%; height:100%; background:var(--amber)}
+  .back .head{display:flex; align-items:center; gap:18px}
+  .back .head .mini{
+    width:74px; height:74px; border-radius:50%; background:#fff; display:grid; place-items:center;
+    box-shadow:inset 0 0 0 1px var(--b100), 0 6px 16px rgba(16,63,60,.10);
+  }
+  .back .head .mini img{width:58px;height:58px;object-fit:contain}
+  .back .head .name{font-family:var(--display); font-weight:800; font-size:34px; letter-spacing:-.02em; color:var(--ink); line-height:1}
+  .back .head .role{margin-top:7px; font-size:12.5px; font-weight:700; letter-spacing:.34em; color:var(--b600); text-transform:uppercase}
+
+  .rule{height:1px; background:linear-gradient(90deg,var(--b200),transparent); margin:26px 0 6px}
+
+  .info{display:flex; flex-direction:column; justify-content:center; flex:1; gap:21px; padding:8px 0}
+  .row{display:flex; align-items:center; gap:18px}
+  .row .ic{
+    width:42px; height:42px; flex:none; border-radius:13px;
+    background:linear-gradient(150deg,#eafaf6,#d6f3ec);
+    display:grid; place-items:center; box-shadow:inset 0 0 0 1px var(--b100);
+  }
+  .row .ic svg{width:21px;height:21px;stroke:var(--b600);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .row .val{font-size:21px; font-weight:600; color:var(--ink); letter-spacing:-.005em}
+  .row .val .k{display:block; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--b500); margin-bottom:2px}
+
+  .back .foot{
+    margin:0 -56px; padding:15px 56px;
+    background:linear-gradient(90deg,var(--b700),var(--b900));
+    color:#fff; text-align:center;
+    font-size:13.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  }
+  .back .foot b{color:var(--b200); font-weight:700}
+
+  @media print{
+    body{background:#fff; padding:0; gap:0}
+    .page-head,.label{display:none}
+    .card{box-shadow:none; border-radius:0; page-break-after:always}
+  }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <h1>Asztalos Tibor Kárpittisztítás — Névjegykártya</h1>
+    <p>Szabványos 85 × 55 mm · az alábbi két kártyát vágd ki külön a screenshothoz</p>
+  </div>
+
+  <div class="stack">
+    <div class="label">Előlap</div>
+    <div class="card front">
+      <div class="frame"></div>
+      <div class="badge"><img src="public/256.png" alt="Asztalos Tibor logó"></div>
+      <div class="name">Asztalos Tibor</div>
+      <div class="role">Kárpittisztítás</div>
+      <div class="tag">Orosháza és környéke</div>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="label">Hátlap</div>
+    <div class="card back">
+      <div class="topbar"></div>
+      <div class="head">
+        <div class="mini"><img src="public/256.png" alt=""></div>
+        <div>
+          <div class="name">Asztalos Tibor</div>
+          <div class="role">Kárpittisztítás</div>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="info">
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="val">+36 30 621 4934</span>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span class="val">asztalostibor13@gmail.com</span>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span class="val">karpittisztitas-oroshaza.hu</span>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="val">Orosháza és környéke</span>
+        </div>
+      </div>
+      <div class="foot">Ülőgarnitúra <b>·</b> Kanapé <b>·</b> Szőnyeg <b>·</b> Matrac</div>
+    </div>
+  </div>
+</body>
+</html>

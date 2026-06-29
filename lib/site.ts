@@ -17,8 +17,8 @@ export const site = {
   // Telefonszám
   phoneDisplay: "+36 30 621 4934",
   phoneRaw: "+36306214934",
-  // E-mail – cseréld le a sajátodra! (jelenleg placeholder)
-  email: "tibor.karpittisztitas@gmail.com",
+  // E-mail
+  email: "asztalostibor13@gmail.com",
   // Nyitvatartás
   hours: "Hétfő–Szombat: 7:00–19:00",
   priceRange: "$$",

@@ -16,8 +16,8 @@ npm run start    # éles szerver indítása build után
 
 Szinte minden szöveges adat **egy helyen**, a `lib/site.ts` fájlban van:
 
-- **E-mail cím** – jelenleg placeholder (`tibor.karpittisztitas@gmail.com`).
-  Cseréld le a valódira! Az árajánlatkérő űrlap erre a címre nyit levelet.
+- **E-mail cím** – `asztalostibor13@gmail.com`.
+  Az árajánlatkérő űrlap erre a címre nyit levelet.
 - **Pontos cím** (`street`) – töltsd ki a jobb helyi (Google) SEO érdekében.
 - **Domain** (`url`) – cseréld le az éles domainre (sitemap, canonical, JSON-LD).
 - **Szolgáltatási területek**, **árak/szövegek**, **vélemények**, **GYIK** – mind itt.
