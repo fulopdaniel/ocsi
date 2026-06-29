@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import "./globals.css";
 import { site, serviceAreas } from "@/lib/site";
@@ -130,6 +131,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id="85eb6e2c-ec98-45f6-a86c-d524dd3fc39c"
+          strategy="afterInteractive"
         />
         {children}
       </body>
