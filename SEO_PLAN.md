@@ -306,3 +306,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 - **Kulcsszó-stuffing**: természetes, magyar nyelvű, helyesen ragozott szöveg (nem „kárpittisztítás Tótkomlós kárpittisztítás olcsó Tótkomlós").
 - **Review-schema szórás**: az `aggregateRating` csak a fő business entitáson, ne minden aloldalon.
 - **Kannibalizáció**: a főoldal marad „Orosháza", az aloldalak más kombinációkat céloznak (1. szakasz).
+
+---
+
+## 15. Bővítés – folteltávolítási útmutatók (2026-06)
+
+Az alapmátrix (szolgáltatás × település) mellé egy új, alacsony versenyű, jól konvertáló oldaltípus került, kihasználva, hogy Orosháza környékén gyenge a verseny.
+
+### Új oldaltípus: folteltávolítási útmutatók (`/folteltavolitas/[folt]`)
+
+Informatív, long-tail oldalak, amiket valaki ÉPP akkor keres, amikor foltos a bútora → könnyű rangsorolni + jól konvertál (minden útmutató CTA-val zárul a kapcsolódó szolgáltatásra). Egyben topikális tekintélyt épít a pénzes oldalaknak.
+
+- Adat: `lib/stains.ts` (`stains` – 8 folt: borfolt, kávéfolt, vérfolt, vizeletfolt, zsírfolt, tintafolt, rágógumi, kisállat-szag). Minden folt egyedi: `intro`, `difficulty`, `urgency`, `surfaces`, lépésenkénti `steps` (HowTo), `mistakes`, `proNote`, `relatedServiceSlug`.
+- Generátorok `lib/seo.ts`-ben: `stainFaqs()` (FAQPage) + `stainHowToJsonLd()` (HowTo schema).
+- Oldalak: `app/folteltavolitas/page.tsx` (hub) + `app/folteltavolitas/[folt]/page.tsx` (`generateStaticParams`). Belső linkek: kapcsolódó szolgáltatás-pillér + 5 település-hub + a többi útmutató. A `Footer` márka-oszlopa linkel a hubra (nincs árva oldal).
+- Sitemap: hub (0.6) + minden útmutató (0.5) hozzáadva.
+
+Új folt felvétele = egy bejegyzés a `stains` tömbbe (az oldal + sitemap regenerálódik). `npm run build` zöld, lint tiszta. Összesen 136 statikus oldal (127-ről).

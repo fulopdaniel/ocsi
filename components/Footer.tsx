@@ -35,6 +35,12 @@ export default function Footer() {
               Békés vármegyében. Helyszíni munkavégzés, kíméletes szerek,
               elégedettségi garancia.
             </p>
+            <Link
+              href="/folteltavolitas"
+              className="mt-4 inline-block text-sm font-bold text-brand-700 transition-colors hover:text-brand-800"
+            >
+              Folteltávolítási útmutatók →
+            </Link>
           </div>
 
           {/* Szolgáltatások */}

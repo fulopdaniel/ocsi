@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site, services, localServices } from "@/lib/site";
 import { areas } from "@/lib/areas";
+import { stains } from "@/lib/stains";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -38,6 +39,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
       });
     }
+  }
+
+  // Folteltávolítási útmutatók (hub + egyedi oldalak)
+  entries.push({
+    url: `${site.url}/folteltavolitas`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  });
+  for (const s of stains) {
+    entries.push({
+      url: `${site.url}/folteltavolitas/${s.slug}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    });
   }
 
   return entries;

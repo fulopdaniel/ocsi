@@ -1,5 +1,6 @@
 import { site, type Service } from "./site";
 import type { Area } from "./areas";
+import type { Stain } from "./stains";
 import type { QA } from "@/components/seo/SeoFaq";
 
 // Kisbetűs kulcsszó mondat közepére (pl. "szőnyegtisztítás")
@@ -74,6 +75,43 @@ export function serviceFaqs(service: Service): QA[] {
       a: `Kizárólag bevizsgált, kíméletes szereket használok, amelyek a textilt és a benne élőket sem károsítják. Száradás után a felület gyermek- és állatbarát.`,
     },
   ];
+}
+
+export function stainFaqs(stain: Stain): QA[] {
+  const lcName = lc(stain.name);
+  return [
+    {
+      q: `Eltávolítható a ${lcName} a kárpitból otthon?`,
+      a: `Frissen a legtöbb folt házilag is jól kezelhető a fenti lépésekkel. A régi, beszáradt vagy kényes, világos huzaton lévő folt viszont könnyen halvány nyomot hagy – ilyenkor érdemes szakembert hívni.`,
+    },
+    {
+      q: `Miért ne dörzsöljem a foltot?`,
+      a: `A dörzsölés a szennyeződést mélyebbre és nagyobb felületre préseli a szálak közé, sőt a szövetet is felbolyhosíthatja. Mindig itatva, pötyögtetve, kívülről befelé haladva dolgozz.`,
+    },
+    {
+      q: `Mennyibe kerül a professzionális folttisztítás Orosházán?`,
+      a: `Az ár a folt típusától, méretétől és a kárpit anyagától függ, ezért ingyenes, kötelezettségmentes árajánlatot adok. Elég egy telefon vagy egy fotó a foltról, és megmondom a pontos árat. Orosházán belül a kiszállás díjmentes.`,
+    },
+    {
+      q: `Mikor érdemes inkább szakembert hívni?`,
+      a: `Ha a folt régi, nagy felületű, szagos, vagy értékes, kényes bútoron van, a helyszíni gépi mélytisztítás a biztos megoldás – a szövet mélyéről vonja ki a szennyeződést, a huzat károsítása nélkül.`,
+    },
+  ];
+}
+
+export function stainHowToJsonLd(stain: Stain) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `${stain.name} eltávolítása a kárpitból`,
+    description: stain.intro,
+    step: stain.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.text,
+    })),
+  };
 }
 
 function capitalize(s: string) {
