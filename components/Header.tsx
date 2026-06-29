@@ -2,16 +2,18 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { site, telLink } from "@/lib/site";
 import { PhoneIcon } from "./icons";
 
+// Abszolút (gyökérre mutató) horgonyok, hogy az aloldalakról is működjenek
 const navLinks = [
-  { href: "#szolgaltatasok", label: "Szolgáltatások" },
-  { href: "#miert-minket", label: "Miért minket" },
-  { href: "#folyamat", label: "Folyamat" },
-  { href: "#velemenyek", label: "Vélemények" },
-  { href: "#gyik", label: "GYIK" },
-  { href: "#kapcsolat", label: "Kapcsolat" },
+  { href: "/#szolgaltatasok", label: "Szolgáltatások" },
+  { href: "/#miert-minket", label: "Miért minket" },
+  { href: "/#folyamat", label: "Folyamat" },
+  { href: "/#velemenyek", label: "Vélemények" },
+  { href: "/#gyik", label: "GYIK" },
+  { href: "/#kapcsolat", label: "Kapcsolat" },
 ];
 
 export default function Header() {
@@ -38,7 +40,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
-        <a href="#top" className="group flex items-center gap-2.5">
+        <Link href="/" className="group flex items-center gap-2.5">
           <Image
             src="/logo.png"
             alt={`${site.name} logó`}
@@ -55,7 +57,7 @@ export default function Header() {
               Kárpittisztítás
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((l) => (

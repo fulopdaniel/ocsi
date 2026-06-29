@@ -24,7 +24,7 @@ Szinte minden szöveges adat **egy helyen**, a `lib/site.ts` fájlban van:
 
 ## 🖼️ Képek
 
-- A hero jelenleg a `public/profilkep.jpg` képet használja (személyes fotó).
+- A hero jelenleg a `public/profilkep.png` képet használja (személyes fotó).
   Cseréld le egy szakmai/„tiszta kanapé" képre, ha lesz – elég felülírni a fájlt.
 - A galéria szekció (`components/Gallery.tsx`) jelenleg **placeholder** „előtte–utána"
   csempéket mutat. Tedd a valódi munkafotóidat a `public/` mappába, és cseréld le

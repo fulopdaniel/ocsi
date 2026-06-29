@@ -54,14 +54,16 @@ export const metadata: Metadata = {
     description:
       "Helyszíni kárpittisztítás Orosházán és környékén. Ingyenes, kötelezettségmentes árajánlat. Hívjon: " +
       site.phoneDisplay,
-    images: [{ url: "/profilkep.jpg", width: 1200, height: 630, alt: site.name }],
+    images: [
+      { url: "/profilkep.png", width: 1200, height: 630, alt: site.name },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kárpittisztítás Orosháza – Asztalos Tibor",
     description:
       "Kanapé-, szőnyeg- és matractisztítás Orosházán. Ingyenes árajánlat.",
-    images: ["/profilkep.jpg"],
+    images: ["/profilkep.png"],
   },
   category: "business",
 };
@@ -71,7 +73,7 @@ const jsonLd = {
   "@type": "HomeAndConstructionBusiness",
   "@id": `${site.url}/#business`,
   name: site.name,
-  image: `${site.url}/profilkep.jpg`,
+  image: `${site.url}/profilkep.png`,
   url: site.url,
   telephone: site.phoneRaw,
   email: site.email,
@@ -92,9 +94,21 @@ const jsonLd = {
   },
   areaServed: serviceAreas.map((a) => ({ "@type": "City", name: a })),
   makesOffer: [
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ülőgarnitúra és kanapé tisztítás" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Szőnyegtisztítás" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Matractisztítás" } },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Ülőgarnitúra és kanapé tisztítás",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Szőnyegtisztítás" },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Matractisztítás" },
+    },
   ],
   aggregateRating: {
     "@type": "AggregateRating",

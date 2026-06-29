@@ -1,12 +1,27 @@
+import Link from "next/link";
 import { services } from "@/lib/site";
 import Reveal from "./Reveal";
-import { SofaIcon, RugIcon, MattressIcon, CheckIcon, ArrowIcon } from "./icons";
+import {
+  SofaIcon,
+  RugIcon,
+  MattressIcon,
+  ChairIcon,
+  CarIcon,
+  OfficeIcon,
+  CheckIcon,
+  ArrowIcon,
+} from "./icons";
 
-const iconMap = {
+export const iconMap = {
   sofa: SofaIcon,
   rug: RugIcon,
   mattress: MattressIcon,
+  chair: ChairIcon,
+  car: CarIcon,
+  office: OfficeIcon,
 } as const;
+
+const primaryServices = services.filter((s) => s.primary);
 
 export default function Services() {
   return (
@@ -25,7 +40,7 @@ export default function Services() {
       </Reveal>
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {services.map((s, i) => {
+        {primaryServices.map((s, i) => {
           const Icon = iconMap[s.icon];
           return (
             <Reveal
@@ -51,13 +66,13 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#kapcsolat"
+              <Link
+                href={`/szolgaltatasok/${s.slug}`}
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-brand-700 transition-colors hover:text-brand-600"
               >
-                Árajánlatot kérek
+                Részletek és árajánlat
                 <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </Reveal>
           );
         })}

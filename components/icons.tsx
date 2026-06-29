@@ -149,6 +149,36 @@ export function ArrowIcon(props: IconProps) {
   );
 }
 
+export function ChairIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 10V6.5A2.5 2.5 0 0 1 8.5 4h7A2.5 2.5 0 0 1 18 6.5V10" />
+      <path d="M6 10a2 2 0 0 0-2 2v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2Z" />
+      <path d="M7 14l-1 6M17 14l1 6" />
+    </svg>
+  );
+}
+
+export function CarIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 13l1.6-4.5A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.5L21 13" />
+      <path d="M3 13h18v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z" />
+      <path d="M6.5 15.5h0M17.5 15.5h0" />
+    </svg>
+  );
+}
+
+export function OfficeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4" y="3" width="16" height="18" rx="1.5" />
+      <path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2" />
+      <path d="M10 21v-3h4v3" />
+    </svg>
+  );
+}
+
 export function ViberIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>

@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Reveal from "./Reveal";
-import { serviceAreas, site } from "@/lib/site";
+import { site } from "@/lib/site";
+import { areas } from "@/lib/areas";
 import { MapPinIcon } from "./icons";
 
 export default function ServiceArea() {
@@ -21,13 +23,14 @@ export default function ServiceArea() {
         </Reveal>
 
         <Reveal delay={120} className="mt-9 flex flex-wrap justify-center gap-2.5">
-          {serviceAreas.map((area) => (
-            <span
-              key={area}
-              className="rounded-full border border-brand-200 bg-surface px-4 py-2 text-sm font-semibold text-brand-800 shadow-soft"
+          {areas.map((area) => (
+            <Link
+              key={area.slug}
+              href={`/teruletek/${area.slug}`}
+              className="rounded-full border border-brand-200 bg-surface px-4 py-2 text-sm font-semibold text-brand-800 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-700"
             >
-              {area}
-            </span>
+              {area.name}
+            </Link>
           ))}
         </Reveal>
       </div>

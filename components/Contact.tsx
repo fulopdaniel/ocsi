@@ -38,7 +38,20 @@ const contactCards = [
 
 const WEB3FORMS_ACCESS_KEY = "ce615c00-58fe-46a0-b469-7c24139b3326";
 
-export default function Contact() {
+type ContactProps = {
+  // Előre kiválasztott szolgáltatás (a Service.title értéke)
+  defaultService?: string;
+  // Település neve – a fejléchez és a beérkező lead beazonosításához
+  locationName?: string;
+  // A kérést indító oldal útvonala – lead-forrás követéshez
+  sourcePath?: string;
+};
+
+export default function Contact({
+  defaultService,
+  locationName,
+  sourcePath,
+}: ContactProps = {}) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -54,12 +67,17 @@ export default function Contact() {
 
     const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `Árajánlatkérés – ${service || "kárpittisztítás"}`,
+      subject: `Árajánlatkérés – ${service || "kárpittisztítás"}${
+        locationName ? ` (${locationName})` : ""
+      }`,
       from_name: site.name,
       name,
       phone,
       service,
       message,
+      // lead-forrás követés
+      telepules: locationName || "",
+      oldal: sourcePath || "/",
       // mézesmadzag a spam ellen – ezt a botok kitöltik, az emberek nem
       botcheck: String(data.get("botcheck") || ""),
     };
@@ -99,7 +117,9 @@ export default function Contact() {
               Kapcsolat
             </span>
             <h2 className="mt-3 text-balance font-display text-3xl font-extrabold sm:text-4xl">
-              Kérj ingyenes árajánlatot
+              {locationName
+                ? `Kérj ingyenes árajánlatot – ${locationName}`
+                : "Kérj ingyenes árajánlatot"}
             </h2>
             <p className="mt-4 text-pretty text-lg text-brand-100/90">
               Hívj, írj Viberen, vagy töltsd ki az űrlapot — a leggyorsabb a
@@ -192,7 +212,7 @@ export default function Contact() {
                     <select
                       id="service"
                       name="service"
-                      defaultValue=""
+                      defaultValue={defaultService ?? ""}
                       className="w-full rounded-xl border border-brand-200 bg-cream/40 px-4 py-3 text-ink outline-none transition-colors focus:border-brand-500 focus:bg-surface"
                     >
                       <option value="" disabled>

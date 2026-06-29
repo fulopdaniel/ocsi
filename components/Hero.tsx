@@ -18,7 +18,10 @@ const badges = [
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36">
+    <section
+      id="top"
+      className="relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36"
+    >
       <div className="absolute inset-0 -z-10 bg-mesh" />
       <div className="absolute inset-0 -z-10 bg-grid" />
       <div className="absolute -top-24 right-0 -z-10 h-72 w-72 rounded-full bg-brand-200/40 blur-3xl" />
@@ -67,9 +70,11 @@ export default function Hero() {
             style={{ animationDelay: "160ms" }}
           >
             Kanapé, ülőgarnitúra, szőnyeg és matrac{" "}
-            <strong className="font-bold text-ink">mélytisztítása helyszínen</strong>{" "}
-            — kíméletes, mégis alapos módszerrel. Frissítse fel otthonát, és aludjon
-            tisztább környezetben.
+            <strong className="font-bold text-ink">
+              mélytisztítása helyszínen
+            </strong>{" "}
+            — kíméletes, mégis alapos módszerrel. Frissítse fel otthonát, és
+            aludjon tisztább környezetben.
           </p>
 
           <div
@@ -105,7 +110,10 @@ export default function Hero() {
             style={{ animationDelay: "360ms" }}
           >
             {badges.map((b) => (
-              <li key={b.label} className="flex items-center gap-2 text-sm font-semibold text-ink">
+              <li
+                key={b.label}
+                className="flex items-center gap-2 text-sm font-semibold text-ink"
+              >
                 <span className="grid h-7 w-7 place-items-center rounded-lg bg-brand-100 text-brand-700">
                   <b.icon className="h-4 w-4" />
                 </span>
@@ -124,12 +132,12 @@ export default function Hero() {
             <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-300/50 to-amber-accent/20 blur-xl" />
             <div className="overflow-hidden rounded-[1.75rem] border-4 border-surface bg-surface shadow-lift">
               <Image
-                src="/profilkep.jpg"
+                src="/profilkep.png"
                 alt="Asztalos Tibor – kárpittisztító szakember, Orosháza"
                 width={720}
                 height={760}
                 priority
-                className="h-[380px] w-full object-cover object-top sm:h-[460px]"
+                className="h-[380px] w-full object-cover object-top sm:h-[560px]"
               />
             </div>
 

@@ -48,17 +48,49 @@ export const serviceAreas = [
 
 export type Service = {
   slug: string;
+  // A kulcsszó alapalakja (pl. "Szőnyegtisztítás") — címekhez, H1-hez
+  keyword: string;
   title: string;
   short: string;
   description: string;
   features: string[];
-  icon: "sofa" | "rug" | "mattress";
+  // Mitől függ az ár — egyedi, hasznos tartalom az aloldalakon
+  priceFactors: string[];
+  icon: "sofa" | "rug" | "mattress" | "chair" | "car" | "office";
+  // Megjelenjen-e a főoldal szolgáltatás-rácsában
+  primary?: boolean;
+  // Készüljön-e hozzá település×szolgáltatás aloldal (false a "kárpittisztítás"
+  // általános pillérnél, mert azt a település-hub fedi le – ld. SEO_PLAN.md)
+  local?: boolean;
 };
 
 export const services: Service[] = [
   {
+    slug: "karpittisztitas",
+    keyword: "Kárpittisztítás",
+    title: "Kárpittisztítás",
+    short: "Bútorkárpitok teljes körű, helyszíni gépi mélytisztítása.",
+    description:
+      "Kanapé, ülőgarnitúra, fotel, szék, matrac és szőnyeg – minden kárpitozott felület professzionális, gépi mélytisztítása egy kézből. A szövet mélyéről vonom ki a port, a zsírt, a foltokat és a szagokat, kíméletes, bevizsgált szerekkel, a helyszínen.",
+    features: [
+      "Minden kárpittípusra",
+      "Helyszíni, gépi mélytisztítás",
+      "Folt-, szag- és allergénmentesítés",
+      "Ingyenes felmérés és árajánlat",
+    ],
+    priceFactors: [
+      "A bútor mérete és típusa",
+      "A kárpit anyaga és szennyezettsége",
+      "A foltok jellege és kora",
+      "A tisztítandó darabok száma",
+    ],
+    icon: "sofa",
+    local: false,
+  },
+  {
     slug: "ulogarnitura-kanape-tisztitas",
-    title: "Ülőgarnitúra & kanapé tisztítás",
+    keyword: "Kanapétisztítás",
+    title: "Ülőgarnitúra & kanapétisztítás",
     short: "Kanapé, sarokgarnitúra, fotel, szék és puff mélytisztítása.",
     description:
       "Professzionális gépi mélytisztítás, amely a szövet mélyéről távolítja el a port, a zsírt, az ételfoltokat és a kellemetlen szagokat. A kárpit megőrzi színét és puhaságát, miközben higiénikussá és frissé válik.",
@@ -68,10 +100,19 @@ export const services: Service[] = [
       "Folt- és szageltávolítás",
       "Allergén- és atkamentesítés",
     ],
+    priceFactors: [
+      "Hány személyes a garnitúra",
+      "Szövet- vagy bőrkárpit",
+      "Folt- és szennyezettség mértéke",
+      "Levehető vagy fix huzat",
+    ],
     icon: "sofa",
+    primary: true,
+    local: true,
   },
   {
     slug: "szonyegtisztitas",
+    keyword: "Szőnyegtisztítás",
     title: "Szőnyegtisztítás",
     short: "Padlószőnyeg és perzsaszőnyeg helyszíni, mélyreható tisztítása.",
     description:
@@ -82,10 +123,19 @@ export const services: Service[] = [
       "Mélytisztítás, szárazporszívózás",
       "Folt- és szageltávolítás",
     ],
+    priceFactors: [
+      "A szőnyeg négyzetmétere",
+      "Anyag: gyapjú, szintetikus, perzsa",
+      "Szőnyeg vastagsága és szálhossza",
+      "Folt- és szennyezettség mértéke",
+    ],
     icon: "rug",
+    primary: true,
+    local: true,
   },
   {
     slug: "matractisztitas",
+    keyword: "Matractisztítás",
     title: "Matractisztítás",
     short: "Matracok fertőtlenítő mélytisztítása az egészséges alváshoz.",
     description:
@@ -96,9 +146,108 @@ export const services: Service[] = [
       "Izzadság- és vizeletfolt kezelése",
       "Szagtalanítás",
     ],
+    priceFactors: [
+      "Egy- vagy kétszemélyes matrac",
+      "Egy- vagy kétoldali tisztítás",
+      "Folt- és szennyezettség mértéke",
+      "Fertőtlenítés szükségessége",
+    ],
     icon: "mattress",
+    primary: true,
+    local: true,
+  },
+  {
+    slug: "fotel-szek-tisztitas",
+    keyword: "Fotel- és széktisztítás",
+    title: "Fotel- és széktisztítás",
+    short: "Fotelek, étkezőszékek, irodaszékek és puffok kárpitjának felfrissítése.",
+    description:
+      "A fotelek és étkezőszékek kárpitja észrevétlenül gyűjti a port, a zsírt és a foltokat. Darabonkénti gépi mélytisztítással újra üde, tiszta és higiénikus lesz minden ülőfelület – kíméletesen, a szövet károsítása nélkül.",
+    features: [
+      "Fotel, fülesfotel, relaxfotel",
+      "Étkező- és irodaszékek",
+      "Puff és lábtartó",
+      "Folt- és szageltávolítás",
+    ],
+    priceFactors: [
+      "A darabok száma",
+      "Kárpit anyaga és állapota",
+      "Folt- és szennyezettség mértéke",
+      "Fix vagy levehető huzat",
+    ],
+    icon: "chair",
+    local: true,
+  },
+  {
+    slug: "autokarpit-tisztitas",
+    keyword: "Autókárpit-tisztítás",
+    title: "Autókárpit-tisztítás",
+    short: "Autóülések, kárpit és csomagtér gépi mélytisztítása.",
+    description:
+      "Az autó belső kárpitja gyorsan beissza a port, az ételfoltot és a szagokat. Az ülések, a tetőkárpit és a csomagtér gépi mélytisztításával az utastér újra friss, tiszta és kellemes illatú lesz – család- és allergiabarát módon.",
+    features: [
+      "Üléskárpit és tetőkárpit",
+      "Szőnyeg és csomagtér",
+      "Folt- és szageltávolítás",
+      "Dohány- és állatszag semlegesítése",
+    ],
+    priceFactors: [
+      "Az autó mérete (kategória)",
+      "Üléshuzat anyaga",
+      "Szennyezettség mértéke",
+      "Teljes vagy részleges tisztítás",
+    ],
+    icon: "car",
+    local: true,
+  },
+  {
+    slug: "iroda-kozuleti-tisztitas",
+    keyword: "Irodai kárpittisztítás",
+    title: "Irodai & közületi kárpittisztítás",
+    short: "Irodák, váróhelyiségek és közületek bútorkárpitjának karbantartása.",
+    description:
+      "Irodaszékek, váróbútorok, kárpitozott tárgyalószékek és padlószőnyegek rendszeres vagy egyszeri mélytisztítása. Tiszta, reprezentatív és egészséges környezet a munkatársaknak és az ügyfeleknek – rugalmas, munkaidőn kívüli időpontokkal is.",
+    features: [
+      "Irodaszékek nagy tételben",
+      "Váró- és tárgyalóbútorok",
+      "Padlószőnyeg helyszínen",
+      "Rugalmas, munkaidőn kívüli időpont",
+    ],
+    priceFactors: [
+      "A tisztítandó darabszám",
+      "A felület típusa és mérete",
+      "Egyszeri vagy rendszeres megbízás",
+      "Időpont (munkaidőn kívül)",
+    ],
+    icon: "office",
+    local: true,
   },
 ];
+
+// Közös tisztítási folyamat – minden szolgáltatásnál ez a munkamenet
+export const processSteps = [
+  {
+    title: "Felmérés és árajánlat",
+    text: "Telefonon vagy fotó alapján felmérem a bútort, és ingyenes, kötelezettségmentes árajánlatot adok.",
+  },
+  {
+    title: "Előkészítés",
+    text: "Leporszívózom a felületet, és kíméletes folttisztítóval előkezelem a makacs szennyeződéseket.",
+  },
+  {
+    title: "Gépi mélytisztítás",
+    text: "Professzionális géppel a szövet mélyéről vonom ki a feloldott szennyeződést, port és atkát.",
+  },
+  {
+    title: "Szárítás és átadás",
+    text: "A felület jellemzően 6–24 óra alatt megszárad. Frissen, tisztán és higiénikusan adom át.",
+  },
+] as const;
+
+// Segédfüggvények a programozott oldalakhoz
+export const getService = (slug: string) =>
+  services.find((s) => s.slug === slug);
+export const localServices = services.filter((s) => s.local);
 
 export const faqs = [
   {

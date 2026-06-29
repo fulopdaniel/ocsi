@@ -4,9 +4,10 @@ import {
   mailLink,
   viberLink,
   services,
-  serviceAreas,
 } from "@/lib/site";
+import { areas } from "@/lib/areas";
 import Image from "next/image";
+import Link from "next/link";
 import { PhoneIcon, MailIcon, MapPinIcon, ViberIcon } from "./icons";
 
 export default function Footer() {
@@ -44,9 +45,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-ink-soft">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <a href="#szolgaltatasok" className="transition-colors hover:text-brand-700">
+                  <Link
+                    href={`/szolgaltatasok/${s.slug}`}
+                    className="transition-colors hover:text-brand-700"
+                  >
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -58,8 +62,15 @@ export default function Footer() {
               Területünk
             </h3>
             <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1.5 text-sm text-ink-soft">
-              {serviceAreas.slice(0, 9).map((a) => (
-                <li key={a}>{a}</li>
+              {areas.slice(0, 10).map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/teruletek/${a.slug}`}
+                    className="transition-colors hover:text-brand-700"
+                  >
+                    {a.name}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
