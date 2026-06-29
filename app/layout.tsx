@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default:
-      "Kárpittisztítás Orosháza | Kanapé-, szőnyeg- és matractisztítás – Asztalos Tibor",
+      "Kárpittisztítás Orosházán és környékén | Kanapé-, szőnyeg- és matractisztítás – Asztalos Tibor",
     template: "%s | Asztalos Tibor Kárpittisztítás",
   },
   description:
@@ -51,18 +51,25 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     title:
-      "Kárpittisztítás Orosháza – Kanapé, szőnyeg és matrac mélytisztítása",
+      "Kárpittisztítás Orosházán és környékén – Kanapé, szőnyeg és matrac mélytisztítása",
     description:
       "Helyszíni kárpittisztítás Orosházán és környékén. Ingyenes, kötelezettségmentes árajánlat. Hívjon: " +
       site.phoneDisplay,
-    // Az og:image-et az app/opengraph-image.tsx generálja (1200×630)
+    images: [
+      {
+        url: "/OG.png",
+        width: 1200,
+        height: 630,
+        alt: site.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kárpittisztítás Orosháza – Asztalos Tibor",
     description:
       "Kanapé-, szőnyeg- és matractisztítás Orosházán. Ingyenes árajánlat.",
-    // A twitter:image is az opengraph-image.tsx-ből öröklődik
+    images: ["/OG.png"],
   },
   category: "business",
 };
