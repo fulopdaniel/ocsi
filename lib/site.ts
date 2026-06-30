@@ -160,7 +160,8 @@ export const services: Service[] = [
     slug: "fotel-szek-tisztitas",
     keyword: "Fotel- és széktisztítás",
     title: "Fotel- és széktisztítás",
-    short: "Fotelek, étkezőszékek, irodaszékek és puffok kárpitjának felfrissítése.",
+    short:
+      "Fotelek, étkezőszékek, irodaszékek és puffok kárpitjának felfrissítése.",
     description:
       "A fotelek és étkezőszékek kárpitja észrevétlenül gyűjti a port, a zsírt és a foltokat. Darabonkénti gépi mélytisztítással újra üde, tiszta és higiénikus lesz minden ülőfelület – kíméletesen, a szövet károsítása nélkül.",
     features: [
@@ -204,7 +205,8 @@ export const services: Service[] = [
     slug: "iroda-kozuleti-tisztitas",
     keyword: "Irodai kárpittisztítás",
     title: "Irodai & közületi kárpittisztítás",
-    short: "Irodák, váróhelyiségek és közületek bútorkárpitjának karbantartása.",
+    short:
+      "Irodák, váróhelyiségek és közületek bútorkárpitjának karbantartása.",
     description:
       "Irodaszékek, váróbútorok, kárpitozott tárgyalószékek és padlószőnyegek rendszeres vagy egyszeri mélytisztítása. Tiszta, reprezentatív és egészséges környezet a munkatársaknak és az ügyfeleknek – rugalmas, munkaidőn kívüli időpontokkal is.",
     features: [
@@ -278,9 +280,10 @@ export const faqs = [
 
 export const testimonials = [
   {
-    name: "Kovács Erika",
+    name: "Varga Róbert",
     place: "Orosháza",
-    text: "Hihetetlen, mennyit változott a kanapénk! Évek óta nem volt ilyen tiszta. Tibor pontos, precíz és nagyon kedves. Csak ajánlani tudom!",
+    image: "/testimonial_1.jpeg",
+    text: "Egy 40 éves vastagszövésű szőnyeget, amely 10 éve porosodott feltekerve, kértem, hogy tisztítson ki Tibi és állítsuk újra hadrendbe. Körülbelül 2–2,5 óra alatt újra ragyogott és nagyon jó illata volt. Kb. fél nap száradt és ennyi. Nagyon szépen köszönöm!",
     rating: 5,
   },
   {

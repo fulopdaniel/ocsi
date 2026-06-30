@@ -39,9 +39,18 @@ export default function Testimonials() {
               „{t.text}”
             </p>
             <div className="mt-5 flex items-center gap-3 border-t border-brand-100 pt-5">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 font-display text-lg font-extrabold text-brand-700">
-                {t.name.charAt(0)}
-              </span>
+              {"image" in t && t.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="h-11 w-11 rounded-full object-cover"
+                />
+              ) : (
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 font-display text-lg font-extrabold text-brand-700">
+                  {t.name.charAt(0)}
+                </span>
+              )}
               <span>
                 <span className="block font-bold text-ink">{t.name}</span>
                 <span className="block text-sm text-ink-soft">{t.place}</span>
