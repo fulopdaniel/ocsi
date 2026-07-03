@@ -287,9 +287,10 @@ export const testimonials = [
     rating: 5,
   },
   {
-    name: "Nagy Sándor",
-    place: "Gyopárosfürdő",
-    text: "A sarokgarnitúra és a szőnyeg is mint új lett. Korrekt ár, megbízható munka, házhoz jött. Legközelebb is őt hívom.",
+    name: "Bajkán Laura",
+    place: "Orosháza",
+    image: "/testimonial_2.png",
+    text: "Tibi nálunk is járt már, a kanapénkat és matracunkat kárpit tisztította. Nagyon megvagyunk elégedve vele, a nagyszüleimnek is ajánlottam akiknél szintén járt, és gyönyörű, alapos munkát végzett. Köszönjük szépen, biztosan keresni fogjuk még!☺️",
     rating: 5,
   },
   {
