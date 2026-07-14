@@ -43,7 +43,7 @@ export default function BeforeAfter({ before, after, label }: Props) {
     <div className="overflow-hidden rounded-3xl border border-brand-100 bg-surface shadow-soft">
       <div
         ref={containerRef}
-        className="relative h-56 cursor-ew-resize select-none touch-none"
+        className="relative h-72 cursor-ew-resize select-none touch-none sm:h-80"
         onPointerDown={(e) => {
           draggingRef.current = true;
           setFromClientX(e.clientX);

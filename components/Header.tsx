@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/#szolgaltatasok", label: "Szolgáltatások" },
   { href: "/#miert-minket", label: "Miért minket" },
   { href: "/#folyamat", label: "Folyamat" },
+  { href: "/#araink", label: "Áraink" },
   { href: "/#velemenyek", label: "Vélemények" },
   { href: "/#gyik", label: "GYIK" },
   { href: "/#kapcsolat", label: "Kapcsolat" },

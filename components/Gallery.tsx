@@ -13,9 +13,9 @@ const items = [
     after: "/after_szonyeg.jpeg",
   },
   {
-    label: "Fotel- és széktisztítás",
-    before: "/before_fotel.png",
-    after: "/after_fotel.jpeg",
+    label: "Széktisztítás",
+    before: "/before_szek.jpeg",
+    after: "/after_szek.jpeg",
   },
 ];
 
