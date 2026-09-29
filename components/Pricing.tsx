@@ -10,15 +10,15 @@ type PriceItem = {
 };
 
 const priceItems: PriceItem[] = [
-  { label: "Szőnyeg", price: "1 400 Ft", unit: "/ m²" },
-  { label: "1 személyes ágy", detail: "90×200", price: "7 000 Ft" },
-  { label: "2 személyes ágy", detail: "180×200", price: "9 000 Ft" },
-  { label: "Kanapé, 2 személyes", price: "10 000 Ft" },
-  { label: "L alakú kanapé", detail: "3 személyes", price: "15 000 Ft" },
-  { label: "U alakú kanapé", detail: "nagy", price: "20 000 Ft" },
-  { label: "1 személyes matrac", price: "5 000 Ft" },
-  { label: "2 személyes matrac", price: "9 000 Ft" },
-  { label: "Étkezőszék", price: "1 600 Ft", unit: "/ darab" },
+  { label: "Szőnyeg", price: "2 000 Ft", unit: "/ m²" },
+  { label: "1 személyes ágy", detail: "90×200", price: "10 000 Ft" },
+  { label: "2 személyes ágy", detail: "180×200", price: "15 000 Ft" },
+  { label: "Kanapé, 2 személyes", price: "15 000 Ft" },
+  { label: "L alakú kanapé", detail: "3 személyes", price: "20 000 Ft" },
+  { label: "U alakú kanapé", detail: "nagy", price: "25 000 Ft" },
+  { label: "1 személyes matrac", price: "10 000 Ft" },
+  { label: "2 személyes matrac", price: "15 000 Ft" },
+  { label: "Étkezőszék", price: "2 000 Ft", unit: "/ darab" },
 ];
 
 export default function Pricing() {
