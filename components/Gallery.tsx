@@ -17,6 +17,11 @@ const items = [
     before: "/before_szek.jpeg",
     after: "/after_szek.jpeg",
   },
+  {
+    label: "Padlószőnyeg-tisztítás",
+    before: "/before_padloszonyeg.jpeg",
+    after: "/after_padloszonyeg.jpeg",
+  },
 ];
 
 export default function Gallery() {
@@ -36,7 +41,7 @@ export default function Gallery() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it, i) => (
             <Reveal key={it.label} delay={i * 100}>
               <BeforeAfter
